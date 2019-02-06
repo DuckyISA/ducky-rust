@@ -189,6 +189,7 @@ pub fn std_cargo(builder: &Builder<'_>,
         features.push_str(&compiler_builtins_c_feature);
 
         // for no-std targets we only compile a few no_std crates
+        println!("target is no-std");
         cargo
             .args(&["-p", "alloc"])
             .arg("--manifest-path")
@@ -218,7 +219,7 @@ pub fn std_cargo(builder: &Builder<'_>,
             .arg("--manifest-path")
             .arg(builder.src.join("src/libtest/Cargo.toml"));
 
-        if target.contains("musl") {
+        if target.contains("musl") || target.contains("ducky") {
             if let Some(p) = builder.musl_root(target) {
                 cargo.env("MUSL_ROOT", p);
             }

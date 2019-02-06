@@ -325,6 +325,7 @@ extern "C" LLVMValueRef
 LLVMRustBuildAtomicLoad(LLVMBuilderRef B, LLVMValueRef Source, const char *Name,
                         LLVMAtomicOrdering Order) {
   LoadInst *LI = new LoadInst(unwrap(Source));
+  //LoadInst *LI = new LoadInst(unwrap(Source), "");
   LI->setAtomic(fromRust(Order));
   return wrap(unwrap(B)->Insert(LI, Name));
 }
@@ -714,6 +715,7 @@ extern "C" LLVMMetadataRef LLVMRustDIBuilderCreateFunction(
       ScopeLine, llvmFlags, IsOptimized, TParams,
       unwrapDIPtr<DISubprogram>(Decl));
 #endif
+
   unwrap<Function>(Fn)->setSubprogram(Sub);
   return wrap(Sub);
 }

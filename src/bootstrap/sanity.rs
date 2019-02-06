@@ -187,6 +187,13 @@ pub fn check(build: &mut Build) {
             }
         }
 
+        if target.contains("ducky") {
+            let target = build.config.target_config.entry(target.clone())
+                .or_default();
+
+            target.no_std = true;
+        }
+
         // Make sure musl-root is valid
         if target.contains("musl") {
             // If this is a native target (host is also musl) and no musl-root is given,

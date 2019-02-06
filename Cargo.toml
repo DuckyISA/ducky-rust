@@ -34,17 +34,21 @@ exclude = [
 # See issue https://github.com/rust-lang/rust/issues/52378
 [profile.release]
 opt-level = 2
+#codegen-units = 1
 [profile.bench]
 opt-level = 2
+#codegen-units = 1
 
 # These options are controlled from our rustc wrapper script, so turn them off
 # here and have them controlled elsewhere.
 [profile.dev]
 debug = false
 debug-assertions = false
+#codegen-units = 1
 [profile.test]
 debug = false
 debug-assertions = false
+#codegen-units = 1
 
 # We want the RLS to use the version of Cargo that we've got vendored in this
 # repository to ensure that the same exact version of Cargo is used by both the

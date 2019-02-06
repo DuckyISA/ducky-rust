@@ -48,6 +48,12 @@ pub fn initialize_available_targets() {
                  LLVMInitializeAMDGPUTargetMC,
                  LLVMInitializeAMDGPUAsmPrinter,
                  LLVMInitializeAMDGPUAsmParser);
+    init_target!(llvm_component = "ducky",
+                 LLVMInitializeDuckyTargetInfo,
+                 LLVMInitializeDuckyTarget,
+                 LLVMInitializeDuckyTargetMC,
+                 LLVMInitializeDuckyAsmPrinter,
+                 LLVMInitializeDuckyAsmParser);
     init_target!(llvm_component = "mips",
                  LLVMInitializeMipsTargetInfo,
                  LLVMInitializeMipsTarget,

@@ -161,7 +161,7 @@ fn main() {
         // Help the libc crate compile by assisting it in finding various
         // sysroot native libraries.
         if let Some(s) = env::var_os("MUSL_ROOT") {
-            if target.contains("musl") {
+            if target.contains("musl") || target.contains("ducky") {
                 let mut root = OsString::from("native=");
                 root.push(&s);
                 root.push("/lib");
@@ -322,6 +322,11 @@ fn main() {
         );
         eprintln!("sysroot: {:?}", sysroot);
         eprintln!("libdir: {:?}", libdir);
+
+        for (i, (k, v)) in env::vars().enumerate() {
+            eprintln!("rustc env[{}]: {} = {}", i, k, v);
+        }
+        eprintln!("rustc directory: {}", env::current_dir().unwrap().display());
     }
 
     if let Some(mut on_fail) = on_fail {

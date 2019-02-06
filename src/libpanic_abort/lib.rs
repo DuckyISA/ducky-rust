@@ -43,7 +43,7 @@ pub unsafe extern fn __rust_maybe_catch_panic(f: fn(*mut u8),
 pub unsafe extern fn __rust_start_panic(_payload: usize) -> u32 {
     abort();
 
-    #[cfg(any(unix, target_os = "cloudabi"))]
+    #[cfg(any(unix, target_os = "cloudabi", target_arch = "ducky"))]
     unsafe fn abort() -> ! {
         libc::abort();
     }

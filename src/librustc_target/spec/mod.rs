@@ -500,6 +500,8 @@ supported_targets! {
     ("powerpc-wrs-vxworks", powerpc_wrs_vxworks),
     ("powerpc-wrs-vxworks-spe", powerpc_wrs_vxworks_spe),
     ("powerpc64-wrs-vxworks", powerpc64_wrs_vxworks),
+
+    ("ducky-unknown-none", ducky_unknown_none)
 }
 
 /// Everything `rustc` knows about how to compile for a specific target.
